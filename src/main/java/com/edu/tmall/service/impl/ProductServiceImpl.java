@@ -4,7 +4,9 @@ import com.edu.tmall.mapper.ProductMapper;
 import com.edu.tmall.pojo.Category;
 import com.edu.tmall.pojo.Product;
 import com.edu.tmall.pojo.ProductExample;
+import com.edu.tmall.pojo.ProductImage;
 import com.edu.tmall.service.CategoryService;
+import com.edu.tmall.service.ProductImageService;
 import com.edu.tmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductImageService productImageService;
 
     @Override
     public void add(Product p) {
@@ -60,6 +65,21 @@ public class ProductServiceImpl implements ProductService {
         List result = productMapper.selectByExample(example);
         setCategory(result);
         return result;
+    }
+
+    @Override
+    public void setFirstProductImage(Product p) {
+        List<ProductImage> pis = productImageService.list(p.getId(), productImageService.type_single);
+        if (!pis.isEmpty()) {
+            ProductImage pi = pis.get(0);
+            p.setFirstProductImage(pi);
+        }
+    }
+
+    public void setFirstProductImage(List<Product> ps) {
+        for (Product p : ps) {
+            setFirstProductImage(p);
+        }
     }
 
     public void setCategory(List<Product> ps) {

@@ -22,5 +22,5 @@ public interface ProductImageService {
 
     ProductImage get(int id);
 
-    List list(int pid,String type);
+    List<ProductImage> list(int pid,String type);
 }
