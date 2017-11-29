@@ -18,4 +18,10 @@ public interface UserService {
     User get(int id);
 
     List<User> list();
+
+    //判断用户名是否存在
+    boolean isExist(String name);
+
+    //根据账号密码查询用户
+    User get(String name,String password);
 }

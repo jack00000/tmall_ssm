@@ -1,6 +1,7 @@
 package com.edu.tmall.pojo;
 
 import java.util.Date;
+import java.util.List;
 
 public class Product {
     private Integer id;
@@ -22,6 +23,50 @@ public class Product {
     private Category category;
 
     private ProductImage firstProductImage;
+
+    //单个产品图片集合
+    private List<ProductImage> productSingleImages;
+
+    //详情产品图片集合
+    private List<ProductImage> productDetailImages;
+
+    //产品销量
+    private Integer saleCount;
+
+    //累计评价
+    private Integer reviewCount;
+
+    public List<ProductImage> getProductSingleImages() {
+        return productSingleImages;
+    }
+
+    public void setProductSingleImages(List<ProductImage> productSingleImages) {
+        this.productSingleImages = productSingleImages;
+    }
+
+    public List<ProductImage> getProductDetailImages() {
+        return productDetailImages;
+    }
+
+    public void setProductDetailImages(List<ProductImage> productDetailImages) {
+        this.productDetailImages = productDetailImages;
+    }
+
+    public Integer getSaleCount() {
+        return saleCount;
+    }
+
+    public void setSaleCount(Integer saleCount) {
+        this.saleCount = saleCount;
+    }
+
+    public Integer getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(Integer reviewCount) {
+        this.reviewCount = reviewCount;
+    }
 
     public ProductImage getFirstProductImage() {
         return firstProductImage;

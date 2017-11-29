@@ -72,6 +72,7 @@ $(function(){
         );      
         return false;
     });
+
     $(".buyLink").click(function(){
         var page = "forecheckLogin";
         $.get(
@@ -82,10 +83,10 @@ $(function(){
                         location.href= $(".buyLink").attr("href")+"&num="+num;
                     }
                     else{
-                        $("#loginModal").modal('show');                     
+                        $("#loginModal").modal('show');
                     }
                 }
-        );      
+        );
         return false;
     });
      

@@ -99,4 +99,23 @@ public class OrderItemServiceImpl implements OrderItemService {
             fill(o);
         }
     }
+
+    /**
+     * 根据产品获取销量
+     * @param pid
+     * @return
+     */
+    @Override
+    public int getSaleCount(int pid) {
+        OrderItemExample example = new OrderItemExample();
+        example.createCriteria().andPidEqualTo(pid);
+        List<OrderItem> orderItems = orderItemMapper.selectByExample(example);
+        int result = 0;
+        for (OrderItem oi : orderItems) {
+            result += oi.getNumber();
+        }
+        return result;
+    }
+
+
 }

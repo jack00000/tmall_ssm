@@ -22,4 +22,7 @@ public interface OrderItemService {
     void fill(Order o);
 
     void fill(List<Order> os);
+
+    //根据产品获取销售量
+    int getSaleCount(int pid);
 }
