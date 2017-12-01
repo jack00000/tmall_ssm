@@ -43,7 +43,7 @@ $(function(){
 </script>	
 <div class="categorySortBar">
 
-
+	<!-- 根据sort参数判断哪个排序按钮高亮,每个排序按钮提交到/forecategory，并带上参数sort -->
 	<table class="categorySortBarTable categorySortTable">
 		<tr>
 			<td <c:if test="${'all'==param.sort||empty param.sort}">class="grayColumn"</c:if> ><a href="?cid=${c.id}&sort=all">综合<span class="glyphicon glyphicon-arrow-down"></span></a></td>

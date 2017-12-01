@@ -5,7 +5,7 @@ import com.edu.tmall.pojo.ProductImage;
 import com.edu.tmall.service.ProductImageService;
 import com.edu.tmall.service.ProductService;
 import com.edu.tmall.util.ImageUtil;
-import com.edu.tmall.util.UploadedImageFile;
+import com.edu.tmall.util.UploadImageFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +33,9 @@ public class ProductImageController {
 
     //添加产品图片
     @RequestMapping("admin_productImage_add")
-    public String add(ProductImage pi, HttpSession session, UploadedImageFile uploadedImageFile) {
+    public String add(ProductImage pi, HttpSession session, UploadImageFile uploadImageFile) {
         productImageService.add(pi);
+        System.out.println(uploadImageFile.toString());
         String fileName = pi.getId()+".jpg";
         String imageFolder;
         String imageFolder_small = null;
@@ -47,9 +48,12 @@ public class ProductImageController {
             imageFolder = session.getServletContext().getRealPath("img/productDetail");
         }
         File f = new File(imageFolder,fileName);
+        System.out.println("获得上传图片"+uploadImageFile.getImage());
+        System.out.println("f文件"+f);
         f.getParentFile().mkdirs();
         try {
-            uploadedImageFile.getImage().transferTo(f);
+            uploadImageFile.getImage().transferTo(f);
+
             BufferedImage img = ImageUtil.change2jpg(f);
             ImageIO.write(img,"jpg",f);
 

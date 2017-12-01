@@ -4,7 +4,7 @@ import com.edu.tmall.pojo.Category;
 import com.edu.tmall.service.CategoryService;
 import com.edu.tmall.util.ImageUtil;
 import com.edu.tmall.util.Page;
-import com.edu.tmall.util.UploadedImageFile;
+import com.edu.tmall.util.UploadImageFile;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +44,13 @@ public class CategoryController {
 
     //添加分类
     @RequestMapping("admin_category_add")
-    public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
+    public String add(Category c, HttpSession session, UploadImageFile uploadImageFile) throws IOException {
         categoryService.add(c);
         File  imageFolder= new File(session.getServletContext().getRealPath("img/category"));
         File file = new File(imageFolder,c.getId()+".jpg");
         if(!file.getParentFile().exists())
             file.getParentFile().mkdirs();
-        uploadedImageFile.getImage().transferTo(file);
+        uploadImageFile.getImage().transferTo(file);
         BufferedImage img = ImageUtil.change2jpg(file);
         ImageIO.write(img, "jpg", file);
         return "redirect:/admin_category_list";
@@ -75,9 +75,9 @@ public class CategoryController {
     }
     //编辑2，修改
     @RequestMapping("admin_category_update")
-    public String update(Category c,HttpSession session,UploadedImageFile uploadedImageFile) throws IOException {
+    public String update(Category c,HttpSession session,UploadImageFile uploadImageFile) throws IOException {
         categoryService.update(c);
-        MultipartFile image = uploadedImageFile.getImage();
+        MultipartFile image = uploadImageFile.getImage();
         if (image!=null && !image.isEmpty()) {
             File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
             File file = new File(imageFolder,c.getId()+".jpg");

@@ -15,7 +15,7 @@
 			<fmt:formatDate value="${o.payDate}" pattern="yyyy-MM-dd HH:mm:ss"/> 
 		</div>
 		<div class="confirmPayTime3">
-			yyyy-MM-dd HH:mm:ss 
+			<fmt:formatDate value="${o.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		</div>
 		
 

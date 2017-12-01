@@ -9,7 +9,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="searchProducts">
-
+	<!--遍历ps，把每个产品的图片，价格，标题等信息显示出来,如果ps为空，则显示 "没有满足条件的产品"-->
 	<c:forEach items="${ps}" var="p">
 	<div class="productUnit" price="${p.promotePrice}">
 		<a href="foreproduct?pid=${p.id}">

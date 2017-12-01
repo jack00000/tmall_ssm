@@ -19,4 +19,19 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+
+    <!-- 对上传文件的解析-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="com.edu.tmall.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/fore*"/>
+            <bean class="com.edu.tmall.interceptor.OtherInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

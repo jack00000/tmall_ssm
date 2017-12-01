@@ -6,7 +6,7 @@
 		 pageEncoding="UTF-8" isELIgnored="false"%>
 
 <div >
-	<a href="${contextPath}">
+	<a href="${contextPath}/forehome">
 		<img id="simpleLogo" class="simpleLogo" src="img/site/simpleLogo.png">
 	</a>
 

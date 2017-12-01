@@ -17,6 +17,7 @@
 </c:if>
 	
 <div class="categoryProducts">
+	<!--显示当前分类下的所有产品，通过forEach遍历c.products集合里的每个产品，并把产品标题，价格，图片，评价数，成交数打印出来 -->
 	<c:forEach items="${c.products}" var="p" varStatus="stc">
 		<c:if test="${stc.count<=categorycount}">
 		<div class="productUnit" price="${p.promotePrice}">
